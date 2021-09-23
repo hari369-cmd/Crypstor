@@ -491,7 +491,7 @@ class Crypster(tk.Tk):
                 ids = self.price_book[num].name + str(self.glob_counter) + "sell2"
                 self.bsgl.insert("", index="end", iid=ids, text="",
                              values=(self.price_book[num].name, buy_time[0], buy[0],
-                                     date, trading_price, gain), tag="red")
+                                     date, trading_price-gain, gain), tag="red")
                 del(buy_time[0])
                 del(buy[0])
         
