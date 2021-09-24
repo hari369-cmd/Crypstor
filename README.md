@@ -1,2 +1,3 @@
 # Crypstor
-The trading algorithm wrapped in a Tkinter UI.
+The Crypto trading algorithm wrapped in a Tkinter GUI.
+![alt text here](Resources/Crypstor.PNG)
