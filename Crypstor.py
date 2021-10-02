@@ -604,11 +604,11 @@ class Crypster(tk.Tk):
             gain = sell_routine(trading_price, buy[0], transaction_cost)
             trading_price += gain                                              # Remove when updating from the website
             self.write_csv([buy_time[0], buy[0], date,
-                            trading_price, gain], 'bs_{}.csv'.format(name))
+                            trading_price-abs(gain), gain], 'bs_{}.csv'.format(name))
             ids = self.price_book[num].name + str(self.glob_counter) + "sell0"
             self.bsgl.insert("", index="end", iid=ids, text="",
                              values=(self.price_book[num].name, buy_time[0], buy[0],
-                                     date, trading_price-gain, gain), tag="red")
+                                     date, trading_price-abs(gain), gain), tag="red")
             # Remove the details associated with the sold buy
             del(buy_time[0])
             del(buy[0])
@@ -618,12 +618,12 @@ class Crypster(tk.Tk):
         if (len(buy) != 0 and trading_price < (buy[0] * (1 + self.price_drop_percent * 0.01))):
             gain = sell_routine(trading_price, buy[0], transaction_cost)
             trading_price += gain                                              # Remove when updating from the website
-            self.write_csv([buy_time[0], buy[0], date, trading_price, gain],
+            self.write_csv([buy_time[0], buy[0], date, trading_price-abs(gain), gain],
                         'bs_{}.csv'.format(name))
             ids = self.price_book[num].name + str(self.glob_counter) + "sell1"
             self.bsgl.insert("", index="end", iid=ids, text="",
                              values=(self.price_book[num].name, buy_time[0], buy[0],
-                                     date, trading_price-gain, gain), tag="red")
+                                     date, trading_price-abs(gain), gain), tag="red")
             del(buy_time[0])
             del(buy[0])
 
@@ -640,12 +640,12 @@ class Crypster(tk.Tk):
             if (trading_price >= min_target):
                 gain = sell_routine(trading_price, buy[0], transaction_cost)
                 trading_price += gain                                          # Remove when updating from the website
-                self.write_csv([buy_time[0], buy[0], date, trading_price-gain, gain],
+                self.write_csv([buy_time[0], buy[0], date, trading_price-abs(gain), gain],
                         'bs_{}.csv'.format(name))
                 ids = self.price_book[num].name + str(self.glob_counter) + "sell2"
                 self.bsgl.insert("", index="end", iid=ids, text="",
                              values=(self.price_book[num].name, buy_time[0], buy[0],
-                                     date, trading_price-gain, gain), tag="red")
+                                     date, trading_price-abs(gain), gain), tag="red")
                 del(buy_time[0])
                 del(buy[0])
         
