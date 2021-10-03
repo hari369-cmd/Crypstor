@@ -742,6 +742,7 @@ class Crypster(tk.Tk):
         
                 else:
                     index = self.tickers.index(self.chosen[i].replace(" ", ""))
+                    self.loc_avg = np.exp(sum([np.log(val) for val in self.price_book[i].price[:]]))/self.sample_steps
                     self.loc_avg = sum(self.price_book[i].price[:])/self.sample_steps
                     self.diff = (self.prices[index] - self.loc_avg)/self.loc_avg
                     
